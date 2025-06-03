@@ -30,13 +30,13 @@
         bottom: 40px;
         width: 360px;
         height: 220px;
-        background: #fff;
+        background: rgba(20, 30, 40, 0.75); /* Updated: translucent dark gray-blue */
         border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        box-shadow: 0 0 15px rgba(0,0,0,0.4);
         display: flex;
         overflow: hidden;
         z-index: 10;
-    }
+    }   
     .login-image {
         width: 40%;
         background-image: url('https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=400&q=80');
@@ -51,11 +51,12 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        color: white; /* New: text color white */
     }
     .login-form h3 {
         margin: 0 0 10px 0;
         font-weight: normal;
-        color: #333;
+        color: white; /* New: heading color white */
         z-index: 11;
     }
     .login-form input[type="text"],
@@ -65,15 +66,16 @@
         margin-bottom: 8px;
         font-size: 14px;
         box-sizing: border-box;
+        background: rgba(255,255,255,0.9); /* Light background for readability */
         border: 1px solid #ccc;
         border-radius: 4px;
         transition: border-color 0.3s ease;
-        z-index: 11;
+        color: #000; /* black text for inputs */
     }
     .login-form input[type="text"]:focus,
     .login-form input[type="password"]:focus {
-        border-color: #3498db;
-        outline: none;
+       border-color: #3498db;
+       outline: none;
     }
     .form-bottom {
         display: flex;
@@ -82,9 +84,9 @@
         z-index: 11;
     }
     .register-link {
-        font-size: 12px;
-        text-decoration: none;
-        color: #555;
+       font-size: 12px;
+       text-decoration: none;
+       color: #ddd; /* lighter for dark background */
     }
     .register-link:hover {
         text-decoration: underline;
@@ -102,9 +104,44 @@
     .login-btn:hover {
         background: #2980b9;
     }
+
+
+    .flash-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    opacity: 0;
+    animation: flashInOut 2.5s ease-out forwards;
+    z-index: 9999;
+}
+
+    @keyframes flashInOut {
+    0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    85% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}
+
+
 </style>
 </head>
+
+
+
 <body>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-message success">{{ messages[0] }}</div>
+        {% endif %}
+    {% endwith %}  
 
 <form class="login-box" method="POST" action="/login">
     <div class="login-image"></div>
