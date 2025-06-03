@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Login</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        margin: 0;
+        background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        /* Optional overlay */
+        position: relative;
+        overflow: hidden;
+    }
+    /* Optional dark overlay on background */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 0;
+    }
+    .login-box {
+        position: fixed;
+        right: 40px;
+        bottom: 40px;
+        width: 360px;
+        height: 220px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        display: flex;
+        overflow: hidden;
+        z-index: 10;
+    }
+    .login-image {
+        width: 40%;
+        background-image: url('https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=400&q=80');
+        background-size: cover;
+        background-position: center;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .login-form {
+        width: 60%;
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .login-form h3 {
+        margin: 0 0 10px 0;
+        font-weight: normal;
+        color: #333;
+        z-index: 11;
+    }
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 8px;
+        font-size: 14px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s ease;
+        z-index: 11;
+    }
+    .login-form input[type="text"]:focus,
+    .login-form input[type="password"]:focus {
+        border-color: #3498db;
+        outline: none;
+    }
+    .form-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 11;
+    }
+    .register-link {
+        font-size: 12px;
+        text-decoration: none;
+        color: #555;
+    }
+    .register-link:hover {
+        text-decoration: underline;
+    }
+    .login-btn {
+        padding: 6px 14px;
+        background: #3498db;
+        color: white;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+    .login-btn:hover {
+        background: #2980b9;
+    }
+</style>
+</head>
+<body>
+
+<form class="login-box" method="POST" action="/login">
+    <div class="login-image"></div>
+    <div class="login-form">
+        <h3>Login</h3>
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <div class="form-bottom">
+            <a href="/register" class="register-link">Register</a>
+            <input type="submit" value="Login" class="login-btn" />
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
